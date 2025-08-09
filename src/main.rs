@@ -1,31 +1,40 @@
+mod collection_object;
+mod task_object;
+mod utils;
 mod window;
-pub mod custom_button;
 
-use gtk::prelude::*;
-use gtk::{gio, glib, Application};
+use adw::prelude::*;
+use gtk::{gio, glib};
+use std::env;
 use window::Window;
 
-const APP_ID: &str = "org.gtk_rs.CompositeTemplates6";
+const APP_ID: &str = "com.qinhuajun.todo";
 
 fn main() -> glib::ExitCode {
-    // Register and include resources
+    unsafe { env::set_var("GSETTINGS_SCHEMA_DIR", "/home/jerrydog/Projects/my-gtk-app/src"); }
+
     gio::resources_register_include!("my-gtk-app.gresource")
         .expect("Failed to register resources.");
 
     // Create a new application
-    let app = Application::builder().application_id(APP_ID).build();
+    let app = adw::Application::builder().application_id(APP_ID).build();
 
-    // Connect to "activate" signal of `app`
+    // Connect to signals
+    app.connect_startup(setup_shortcuts);
     app.connect_activate(build_ui);
 
     // Run the application
     app.run()
 }
 
-// ANCHOR: build_ui
-fn build_ui(app: &Application) {
-    // Create new window and present it
+fn setup_shortcuts(app: &adw::Application) {
+    app.set_accels_for_action("win.filter('All')", &["<Ctrl>a"]);
+    app.set_accels_for_action("win.filter('Open')", &["<Ctrl>o"]);
+    app.set_accels_for_action("win.filter('Done')", &["<Ctrl>d"]);
+}
+
+fn build_ui(app: &adw::Application) {
+    // Create a new custom window and present it
     let window = Window::new(app);
     window.present();
 }
-// ANCHOR_END: build_ui
