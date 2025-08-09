@@ -1,11 +1,17 @@
+mod window;
+pub mod custom_button;
+
 use gtk::prelude::*;
-use gtk::{glib, Application};
+use gtk::{gio, glib, Application};
+use window::Window;
 
-mod windows;
-
-const APP_ID: &str = "org.gtk_rs.HelloWorld2";
+const APP_ID: &str = "org.gtk_rs.CompositeTemplates6";
 
 fn main() -> glib::ExitCode {
+    // Register and include resources
+    gio::resources_register_include!("my-gtk-app.gresource")
+        .expect("Failed to register resources.");
+
     // Create a new application
     let app = Application::builder().application_id(APP_ID).build();
 
@@ -16,8 +22,10 @@ fn main() -> glib::ExitCode {
     app.run()
 }
 
+// ANCHOR: build_ui
 fn build_ui(app: &Application) {
-    // Create and show the main window using the new structure
-    let main_window = windows::MainWindow::new(app);
-    main_window.present();
+    // Create new window and present it
+    let window = Window::new(app);
+    window.present();
 }
+// ANCHOR_END: build_ui
