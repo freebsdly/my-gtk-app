@@ -30,8 +30,8 @@
     </menu>
     <template class="TodoWindow" parent="AdwApplicationWindow">
         <property name="title" translatable="yes">To-Do</property>
-        <property name="width-request">360</property>
-        <property name="height-request">200</property>
+        <property name="width-request">800</property>
+        <property name="height-request">600</property>
         <child>
             <object class="AdwBreakpoint">
                 <condition>max-width: 500sp</condition>
@@ -50,7 +50,7 @@
                                 <child>
                                     <object class="GtkHeaderBar">
                                         <style>
-                                            <class name="flat" />
+                                            <class name="flat"/>
                                         </style>
                                     </object>
                                 </child>
@@ -60,16 +60,19 @@
                                             <object class="AdwStatusPage">
                                                 <property name="icon-name">checkbox-checked-symbolic</property>
                                                 <property name="title" translatable="yes">No Tasks</property>
-                                                <property name="description" translatable="yes">Create some tasks to start using the app.</property>
+                                                <property name="description" translatable="yes">Create some tasks to
+                                                    start using the app.
+                                                </property>
                                                 <property name="child">
                                                     <object class="GtkButton">
-                                                        <property name="label" translatable="yes">_New Collection</property>
+                                                        <property name="label" translatable="yes">_New Collection
+                                                        </property>
                                                         <property name="use-underline">True</property>
                                                         <property name="halign">center</property>
                                                         <property name="action-name">win.new-collection</property>
                                                         <style>
-                                                            <class name="pill" />
-                                                            <class name="suggested-action" />
+                                                            <class name="pill"/>
+                                                            <class name="suggested-action"/>
                                                         </style>
                                                     </object>
                                                 </property>
@@ -90,7 +93,7 @@
                                 <property name="sidebar">
                                     <object class="AdwNavigationPage">
                                         <property name="title" bind-source="TodoWindow"
-                                                  bind-property="title" bind-flags="sync-create" />
+                                                  bind-property="title" bind-flags="sync-create"/>
                                         <property name="child">
                                             <object class="AdwToolbarView">
                                                 <child type="top">
@@ -98,8 +101,11 @@
                                                         <child type="start">
                                                             <object class="GtkToggleButton">
                                                                 <property name="icon-name">list-add-symbolic</property>
-                                                                <property name="tooltip-text" translatable="yes">New Collection</property>
-                                                                <property name="action-name">win.new-collection</property>
+                                                                <property name="tooltip-text" translatable="yes">New
+                                                                    Collection
+                                                                </property>
+                                                                <property name="action-name">win.new-collection
+                                                                </property>
                                                             </object>
                                                         </child>
                                                     </object>
@@ -109,7 +115,7 @@
                                                         <property name="child">
                                                             <object class="GtkListBox" id="collections_list">
                                                                 <style>
-                                                                    <class name="navigation-sidebar" />
+                                                                    <class name="navigation-sidebar"/>
                                                                 </style>
                                                             </object>
                                                         </property>
@@ -131,7 +137,9 @@
                                                             <object class="GtkMenuButton">
                                                                 <property name="icon-name">open-menu-symbolic</property>
                                                                 <property name="menu-model">main-menu</property>
-                                                                <property name="tooltip-text" translatable="yes">Main Menu</property>
+                                                                <property name="tooltip-text" translatable="yes">Main
+                                                                    Menu
+                                                                </property>
                                                             </object>
                                                         </child>
                                                     </object>
@@ -150,16 +158,23 @@
                                                                         <property name="spacing">12</property>
                                                                         <child>
                                                                             <object class="GtkEntry" id="entry">
-                                                                                <property name="placeholder-text" translatable="yes">Enter a Task…</property>
-                                                                                <property name="secondary-icon-name">list-add-symbolic</property>
+                                                                                <property name="placeholder-text"
+                                                                                          translatable="yes">Enter a
+                                                                                    Task…
+                                                                                </property>
+                                                                                <property name="secondary-icon-name">
+                                                                                    list-add-symbolic
+                                                                                </property>
                                                                             </object>
                                                                         </child>
                                                                         <child>
                                                                             <object class="GtkListBox" id="tasks_list">
-                                                                                <property name="visible">False</property>
-                                                                                <property name="selection-mode">none</property>
+                                                                                <property name="visible">False
+                                                                                </property>
+                                                                                <property name="selection-mode">none
+                                                                                </property>
                                                                                 <style>
-                                                                                    <class name="boxed-list" />
+                                                                                    <class name="boxed-list"/>
                                                                                 </style>
                                                                             </object>
                                                                         </child>
